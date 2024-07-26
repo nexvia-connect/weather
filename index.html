@@ -62,7 +62,7 @@
                 if (tempDivs.length > 0) {
                     tempDivs.forEach(div => div.style.display = 'none');
                 } else {
-                    setTimeout(hideTempDivs, 100); // Retry after 100ms if tempDivs are not yet available
+                    setTimeout(hideTempDivs, 500); // Retry after 100ms if tempDivs are not yet available
                 }
             }
         }
@@ -74,7 +74,7 @@
                 if (dayForecastSvgs.length > 0) {
                     dayForecastSvgs.forEach(svg => svg.style.margin = '0');
                 } else {
-                    setTimeout(updateSvgMargin, 100); // Retry after 100ms if dayForecastSvgs are not yet available
+                    setTimeout(updateSvgMargin, 500); // Retry after 100ms if dayForecastSvgs are not yet available
                 }
             }
         }
@@ -92,7 +92,7 @@
                         div.innerHTML = `${currentDate.toLocaleDateString('en-GB', options).replace(/,/g, '')}`;
                     });
                 } else {
-                    setTimeout(updateDates, 100); // Retry after 100ms if dateDivs are not yet available
+                    setTimeout(updateDates, 500); // Retry after 100ms if dateDivs are not yet available
                 }
             }
         }
@@ -126,7 +126,7 @@
                     el.style.fontFamily = "'Open Sans', sans-serif !important";
                 });
             } else {
-                setTimeout(forceFontChange, 100); // Retry after 100ms if widgetDiv is not yet available
+                setTimeout(forceFontChange, 500); // Retry after 100ms if widgetDiv is not yet available
             }
         }
     
@@ -139,7 +139,7 @@
         }
     
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(initWidgetModifications, 100); // Initial delay to ensure the widget loads
+            setTimeout(initWidgetModifications, 500); // Initial delay to ensure the widget loads
         });
     </script>
 </body>
