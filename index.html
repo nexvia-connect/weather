@@ -24,11 +24,11 @@
             height: 60px;
             opacity: 0; /* Make buttons invisible */
             border-radius: 5px;
-            z-index: 1; /* Ensure buttons are behind the content */
         }
         .virtual-button:hover {
             background-color: rgba(0, 0, 0, 0.1);
-            z-index: -1; /* Ensure buttons are behind the content */
+            opacity: 1;
+            z-index: -1;
         }
         .button1 { left: 0; }
         .button2 { left: 14.28%; }
@@ -44,10 +44,6 @@
 
         #ww_aafa8719d1cd6 .ww-box {
             font-family: Open Sans !important; /* Ensure it inherits from parent and overrides other styles */
-            opacity: 0.9; /* Set initial opacity */
-        }
-        #ww_aafa8719d1cd6 .ww-box:hover {
-            opacity: 1; /* Set opacity to 1 on hover */
         }
     </style>
 </head>
@@ -97,7 +93,7 @@
                         const currentDate = new Date(today);
                         currentDate.setDate(today.getDate() + index);
                         const options = { weekday: 'short', day: '2-digit', month: '2-digit' };
-                        div.innerHTML = `${currentDate.toLocaleDateString('en-GB', options).replace(/,/g, '')}`;
+                        div.innerHTML = ${currentDate.toLocaleDateString('en-GB', options).replace(/,/g, '')};
                     });
                 } else {
                     setTimeout(updateDates, 100); // Retry after 100ms if dateDivs are not yet available
