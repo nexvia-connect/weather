@@ -83,7 +83,7 @@
                         const currentDate = new Date(today);
                         currentDate.setDate(today.getDate() + index);
                         const options = { weekday: 'short', day: '2-digit', month: '2-digit' };
-                        div.innerHTML = `${currentDate.toLocaleDateString('en-GB', options)}`;
+                        div.innerHTML = `${currentDate.toLocaleDateString('en-GB', options).replace(/,/g, '')}`;
                     });
                 } else {
                     setTimeout(updateDates, 100); // Retry after 100ms if dateDivs are not yet available
