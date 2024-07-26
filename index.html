@@ -105,11 +105,13 @@
                 button.addEventListener('mouseover', () => {
                     if (dates[index]) {
                         dates[index].style.color = '#333';
+                        dates[index].style.fontWeight = 'bold';
                     }
                 });
                 button.addEventListener('mouseout', () => {
                     if (dates[index]) {
                         dates[index].style.color = '#999';
+                        dates[index].style.fontWeight = 'normal';
                     }
                 });
             });
