@@ -39,15 +39,6 @@
         .date {
             color: #999;
         }
-        .button1:hover ~ #ww_aafa8719d1cd6 .date:nth-child(1),
-        .button2:hover ~ #ww_aafa8719d1cd6 .date:nth-child(2),
-        .button3:hover ~ #ww_aafa8719d1cd6 .date:nth-child(3),
-        .button4:hover ~ #ww_aafa8719d1cd6 .date:nth-child(4),
-        .button5:hover ~ #ww_aafa8719d1cd6 .date:nth-child(5),
-        .button6:hover ~ #ww_aafa8719d1cd6 .date:nth-child(6),
-        .button7:hover ~ #ww_aafa8719d1cd6 .date:nth-child(7) {
-            color: #333;
-        }
     </style>
 </head>
 <body>
@@ -103,11 +94,30 @@
                 }
             }
         }
+
+        function addHoverEffect() {
+            const buttons = document.querySelectorAll('.virtual-button');
+            const dates = document.querySelectorAll('#ww_aafa8719d1cd6 .date');
+
+            buttons.forEach((button, index) => {
+                button.addEventListener('mouseover', () => {
+                    if (dates[index]) {
+                        dates[index].style.color = '#333';
+                    }
+                });
+                button.addEventListener('mouseout', () => {
+                    if (dates[index]) {
+                        dates[index].style.color = '#999';
+                    }
+                });
+            });
+        }
     
         function initWidgetModifications() {
             hideTempDivs();
             updateSvgMargin();
             updateDates();
+            addHoverEffect();
         }
     
         document.addEventListener('DOMContentLoaded', function() {
