@@ -136,14 +136,29 @@
             }
         }
     
+        function removeSpecificElement() {
+            const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
+            if (widgetDiv) {
+                const specificElement = widgetDiv.querySelector('div.ww-box > div.ww_col2 > div:nth-child(25)');
+                if (specificElement) {
+                    specificElement.remove();
+                } else {
+                    setTimeout(removeSpecificElement, 500); // Retry after 500ms if specificElement is not yet available
+                }
+            } else {
+                setTimeout(removeSpecificElement, 500); // Retry after 500ms if widgetDiv is not yet available
+            }
+        }
+        
         function initWidgetModifications() {
             hideTempDivs();
             updateSvgMargin();
             updateDates();
             addHoverEffect();
             forceFontChange();
+            removeSpecificElement(); // Call the new function here
         }
-    
+        
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(initWidgetModifications, 500); // Initial delay to ensure the widget loads
         });
