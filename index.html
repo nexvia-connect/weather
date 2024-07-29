@@ -132,6 +132,17 @@
                 setTimeout(forceFontChange, 500); // Retry after 100ms if widgetDiv is not yet available
             }
         }
+
+        function removeFirstSection() {
+            const firstSection = document.querySelector("#ww_aafa8719d1cd6 > div.ww-box > div.ww_col2 > div:nth-child(25)");
+            if (firstSection) {
+                console.log("Removing first section");
+                firstSection.remove();
+            } else {
+                console.log("First section not found, retrying...");
+                setTimeout(removeFirstSection, 500); // Retry after 500ms if first section is not yet available
+            }
+        }
     
         function initWidgetModifications() {
             hideTempDivs();
@@ -139,11 +150,7 @@
             updateDates();
             addHoverEffect();
             forceFontChange();
-
-            const firstSection = document.querySelector("#ww_aafa8719d1cd6 > div.ww-box > div.ww_col2 > div:nth-child(25)");
-            if (firstSection) {
-                firstSection.remove();
-            }
+            removeFirstSection();
         }
     
         document.addEventListener('DOMContentLoaded', function() {
