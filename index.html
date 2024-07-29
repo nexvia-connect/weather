@@ -20,22 +20,24 @@
         .virtual-button {
             position: absolute;
             top: 0;
-            width: 16.66%; /* 100% / 6 buttons */
+            width: 14.28%; /* 100% / 7 buttons */
             height: 65px;
             opacity: 0; /* Make buttons invisible */
             border-radius: 5px;
         }
         .virtual-button:hover {
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0);
             opacity: 1;
             z-index: 3000;
+            border: 1px solid #eee
         }
         .button1 { left: 0; }
-        .button2 { left: 16.66%; }
-        .button3 { left: 33.32%; }
-        .button4 { left: 49.98%; }
-        .button5 { left: 66.64%; }
-        .button6 { left: 83.3%; }
+        .button2 { left: 14.28%; }
+        .button3 { left: 28.56%; }
+        .button4 { left: 42.84%; }
+        .button5 { left: 57.12%; }
+        .button6 { left: 71.4%; }
+        .button7 { left: 85.68%; }
 
         .date {
             color: #999;
@@ -45,12 +47,13 @@
 <body>
     <div id="ww_aafa8719d1cd6" v='1.3' loc='id' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":["wl1775"],"font":"Open+Sans","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"rgba(255,255,255,1)","cl_font":"rgba(51,51,51,1)","cl_cloud":"rgba(238,238,238,1)","cl_persp":"rgba(31,64,153,0.30500000000000005)","cl_sun":"rgba(252,219,51,1)","cl_moon":"#FFC107","cl_thund":"rgba(252,51,102,1)","cl_odd":"#00000000","el_ctm":3,"el_cwi":3,"el_nme":3}'><a href="https://weatherwidget.org/" id="ww_aafa8719d1cd6_u" target="_blank">Widget weather</a></div><script async src="https://app2.weatherwidget.org/js/?id=ww_aafa8719d1cd6"></script>
     
-    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=1" class="virtual-button button1" target="_blank"></a>
-    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=2" class="virtual-button button2" target="_blank"></a>
-    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=3" class="virtual-button button3" target="_blank"></a>
-    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=4" class="virtual-button button4" target="_blank"></a>
-    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=5" class="virtual-button button5" target="_blank"></a>
-    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=6" class="virtual-button button6" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=0" class="virtual-button button1" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=1" class="virtual-button button2" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=2" class="virtual-button button3" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=3" class="virtual-button button4" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=4" class="virtual-button button5" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=5" class="virtual-button button6" target="_blank"></a>
+    <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=6" class="virtual-button button7" target="_blank"></a>
 
     <script>
         function hideTempDivs() {
@@ -60,7 +63,7 @@
                 if (tempDivs.length > 0) {
                     tempDivs.forEach(div => div.style.display = 'none');
                 } else {
-                    setTimeout(hideTempDivs, 500); // Retry after 100ms if tempDivs are not yet available
+                    setTimeout(hideTempDivs, 500); // Retry after 500ms if tempDivs are not yet available
                 }
             }
         }
@@ -72,7 +75,7 @@
                 if (dayForecastSvgs.length > 0) {
                     dayForecastSvgs.forEach(svg => svg.style.margin = '0');
                 } else {
-                    setTimeout(updateSvgMargin, 500); // Retry after 100ms if dayForecastSvgs are not yet available
+                    setTimeout(updateSvgMargin, 500); // Retry after 500ms if dayForecastSvgs are not yet available
                 }
             }
         }
@@ -87,10 +90,10 @@
                         const currentDate = new Date(today);
                         currentDate.setDate(today.getDate() + index);
                         const options = { weekday: 'short', day: '2-digit', month: '2-digit' };
-                        div.innerHTML = ${currentDate.toLocaleDateString('en-GB', options).replace(/,/g, '')};
+                        div.innerHTML = currentDate.toLocaleDateString('en-GB', options).replace(/,/g, '');
                     });
                 } else {
-                    setTimeout(updateDates, 500); // Retry after 100ms if dateDivs are not yet available
+                    setTimeout(updateDates, 500); // Retry after 500ms if dateDivs are not yet available
                 }
             }
         }
@@ -129,18 +132,7 @@
                     el.style.fontFamily = "'Open Sans', sans-serif !important";
                 });
             } else {
-                setTimeout(forceFontChange, 500); // Retry after 100ms if widgetDiv is not yet available
-            }
-        }
-
-        function removeFirstSection() {
-            const firstSection = document.querySelector("#ww_aafa8719d1cd6 > div.ww-box > div.ww_col2 > div:nth-child(25)");
-            if (firstSection) {
-                console.log("Removing first section");
-                firstSection.remove();
-            } else {
-                console.log("First section not found, retrying...");
-                setTimeout(removeFirstSection, 500); // Retry after 500ms if first section is not yet available
+                setTimeout(forceFontChange, 500); // Retry after 500ms if widgetDiv is not yet available
             }
         }
     
@@ -150,7 +142,6 @@
             updateDates();
             addHoverEffect();
             forceFontChange();
-            removeFirstSection();
         }
     
         document.addEventListener('DOMContentLoaded', function() {
