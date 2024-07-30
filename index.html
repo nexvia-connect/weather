@@ -103,7 +103,7 @@
     
             buttons.forEach((button, index) => {
                 button.addEventListener('mouseover', () => {
-                    const adjIndex = index - 1;
+                    const adjIndex = index + 1;
                     if (dates[adjIndex]) {
                         dates[adjIndex].style.color = '#333';
                         dates[adjIndex].style.fontWeight = 'normal';
