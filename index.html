@@ -18,10 +18,10 @@
             height: 100%;
         }
         .virtual-button {
-            margin: 10px 3px;
+            margin: 0;
             position: absolute;
             top: 0;
-            width: 16%;
+            width: calc(16.666% - 6px); /* 16.666% to evenly space 6 buttons over 100% width, minus 6px for margins */
             height: 70px;
             opacity: 0;
             border-radius: 5px;
