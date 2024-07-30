@@ -155,8 +155,13 @@
                 } else {
                     setTimeout(removeSpecificElement, 500); // Retry after 500ms if specificElement is not yet available
                 }
-            } else {
-                setTimeout(removeSpecificElement, 500); // Retry after 500ms if widgetDiv is not yet available
+        
+                const infoElement = widgetDiv.querySelector('div.ww_info');
+                if (infoElement) {
+                    infoElement.remove();
+                }
+                } else {
+                    setTimeout(removeSpecificElement, 500); // Retry after 500ms if widgetDiv is not yet available
             }
         }
 
