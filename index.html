@@ -105,7 +105,7 @@
                 button.addEventListener('mouseover', () => {
                     const adjIndex = index + 1;
                     if (dates[adjIndex]) {
-                        dates[adjIndex].style.color = '#333';
+                        dates[adjIndex].style.color = '#666';
                         dates[adjIndex].style.fontWeight = 'normal';
                         data[adjIndex].style.transition = 'transform 0.2s ease';
                         data[adjIndex].style.transform = 'scale(1.3)';
@@ -114,7 +114,7 @@
                 button.addEventListener('mouseout', () => {
                     const adjIndex = index + 1;
                     if (dates[adjIndex]) {
-                        dates[adjIndex].style.color = '#999';
+                        dates[adjIndex].style.color = '#ccc';
                         dates[adjIndex].style.fontWeight = 'normal';
                         data[adjIndex].style.transition = 'transform 0.2s ease';
                         data[adjIndex].style.transform = 'scale(1)';
