@@ -18,7 +18,7 @@
             height: 100%;
         }
         .virtual-button {
-            margin: 0;
+            margin-top: 10px;
             position: absolute;
             top: 0;
             width: calc(16.666% - 6px); /* 16.666% to evenly space 6 buttons over 100% width, minus 6px for margins */
@@ -118,7 +118,7 @@
                     if (dates[adjIndex]) {
                         dates[adjIndex].style.color = '#666';
                         data[adjIndex].style.transition = 'transform 0.4s ease';
-                        data[adjIndex].style.transform = 'scale(1.3)';
+                        data[adjIndex].style.transform = 'scale(1.4)';
                     }
                 });
                 button.addEventListener('mouseout', () => {
