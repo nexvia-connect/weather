@@ -159,6 +159,21 @@
                 setTimeout(removeSpecificElement, 500); // Retry after 500ms if widgetDiv is not yet available
             }
         }
+
+        function applyResponsiveStyles() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media screen and (max-width: 329px) {
+                    #ww_aafa8719d1cd6 .ww-box {
+                        flex-direction: row !important;
+                    }
+                    #ww_aafa8719d1cd6 .ww-box[max-width~="329px"] .day-forecast {
+                        flex-direction: column !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
         
         function initWidgetModifications() {
             hideTempDivs();
@@ -166,7 +181,8 @@
             updateDates();
             addHoverEffect();
             forceFontChange();
-            removeSpecificElement(); // Call the new function here
+            removeSpecificElement();
+            applyResponsiveStyles();
         }
         
         document.addEventListener('DOMContentLoaded', function() {
